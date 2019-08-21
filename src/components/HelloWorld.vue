@@ -1,94 +1,55 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          HelloWorld
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  <el-container>
+    <el-header class="header">
+      <div></div>
+    </el-header>  
+    <el-main>
+      <div class="title">详细信息</div>
+      <el-tabs v-model="activeName">
+          <el-tab-pane label="药品" name="first">药品</el-tab-pane>
+          <el-tab-pane label="化妆品" name="second">化妆品</el-tab-pane>
+          <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+      </el-tabs>
+      <el-card class="box-card">
+        <div slot="header"  class="clearfix">
+          <span class="word">111</span>
+         
+        </div>
+        <div v-for="index in 4" :key='index' class="text">
+          {{index}}
+        </div>
+        
+      </el-card>
+      <el-card class="box-card">
+          <div slot="header"  class="clearfix">
+            <span class="word">111</span>
+           
+          </div>
+          <div v-for="index in 4" :key='index' class="text">
+            {{index}}
+          </div>
+          
+        </el-card>
+    </el-main>
+   
+  </el-container>
+  <!-- <el-input-number v-model="num1" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number> -->
 </template>
 
 <script>
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      num1: 1,
+      activeName: 'first'
+    }
+  },
+  methods: {
+    handleChange (value) {
+      console.log(value)
     }
   }
 }
@@ -96,6 +57,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.header{
+  background: url('../assets/header.png') no-repeat 100% 100%;
+  width:100%;
+  height:100px!important;
+  background-size: 100%;
+}
+.title{
+  width: 100%;
+  height:30px;
+  line-height: 30px;
+  background: #eee;
+  text-align: left;
+}
+.clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+.box-card {
+    width: 100%;
+  }
 h1, h2 {
   font-weight: normal;
 }
